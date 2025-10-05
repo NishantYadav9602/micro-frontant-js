@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  app1:
+    build: ./micro-front-end-main
+    container_name: app1
+    ports:
+      - "3001:3001"
+  
+  app2:
+    build: ./micro-front-end-activate
+    container_name: app2
+    ports:
+      - "3002:3002"
+  
+  shell:
+    build: ./micro-front-end-shell
+    container_name: shell
+    ports:
+      - "3000:3000"
+    depends_on:
+      - app1
+      - app2
+
